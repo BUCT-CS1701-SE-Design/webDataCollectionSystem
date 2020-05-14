@@ -8,7 +8,7 @@ class Musume75Spider(scrapy.Spider):
     start_urls = ['http://www.chnmus.net']
     # 设置经过哪个pipeline去处理，必须设置
     custom_settings={
-        'ITEM_PIPELINES':{'MUSEUMS.pipelines.MuseumsPipeline': 1,}
+        'ITEM_PIPELINES':{'MUSEUMS.pipelines.MuseumsPipeline': 5,}
     }
     def parse(self, response):
         item=MuseumsItem()

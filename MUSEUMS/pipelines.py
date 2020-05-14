@@ -7,6 +7,7 @@
 import csv
 import os
 import re
+import copy
 import pymysql
 import logging
 logger = logging.getLogger(__name__)
@@ -14,6 +15,10 @@ MYSQL_HOST = 'rm-bp1k0s6kbpm66bpfc4o.mysql.rds.aliyuncs.com'
 MYSQL_DBNAME = 'museumapplication'
 MYSQL_USER = 'test1'
 MYSQL_PASSWD = 'test1'  
+'''MYSQL_HOST = 'localhost'
+MYSQL_DBNAME = 'henan'
+MYSQL_USER = 'root'
+MYSQL_PASSWD = '19980305' '''
 #博物馆表
 class MuseumsPipeline(object):
     def __init__(self):
@@ -44,7 +49,7 @@ class MuseumsPipeline(object):
         for i in introduction:
             content+=i
         introduction=content
-        return introduction   
+        return introduction 
 #藏品表
 class Collection75Pipeline(object):
     def __init__(self):
@@ -59,17 +64,19 @@ class Collection75Pipeline(object):
         # 通过cursor执行增删查改
         self.cursor = self.connect.cursor()
     def process_item(self, item, spider):
-        #print(item)
+        #深拷贝
+        asynItem = copy.deepcopy(item)
+        item=asynItem
         insert_sql = "INSERT INTO collection(museumID,collectionName,collectionIntroduction,collectionImage) VALUES ('%s', '%s', '%s', '%s')" % (item['museumID'], item['collectionName'], item['collectionIntroduction'], item['collectionImage'])
         self.cursor.execute(insert_sql)
 
         # 4. 提交操作
         self.connect.commit()
-        return item
+        #return item
     def close_spider(self, spider):
         self.cursor.close()
         self.connect.close()
-#展览表
+#展览表(没有exhibitionintroduction,exhibitionTime)
 class Exhibition75Pipeline(object):
     def __init__(self):
         # 连接数据库
@@ -93,5 +100,31 @@ class Exhibition75Pipeline(object):
         self.cursor.close()
         self.connect.close()
     
+class Exhibition76Pipeline(object):
+    def __init__(self):
+        # 连接数据库
+        self.connect = pymysql.connect(
+            host=MYSQL_HOST,
+            db=MYSQL_DBNAME,
+            user=MYSQL_USER,
+            passwd=MYSQL_PASSWD,
+            charset='utf8',
+            use_unicode=True)
+        # 通过cursor执行增删查改
+        self.cursor = self.connect.cursor()
+    def process_item(self, item, spider):
+        #深拷贝
+        asynItem = copy.deepcopy(item)
+        item=asynItem
+        #print(item)
+        insert_sql = "INSERT INTO exhibition(museumID,exhibitionTime,exhibitionTheme,exhibitionIntroduction,exhibition_picture) VALUES ('%s', '%s', '%s', '%s', '%s')" % (item['museumID'], item['exhibitionTime'], item['exhibitionTheme'], item['exhibitionIntroduction'], item['exhibition_picture'])
+        #insert_sql = "INSERT INTO exhibition(museumID,exhibitionTime,exhibitionTheme,exhibitionIntroduction,exhibition_picture) VALUES ('%s', '%s', '%s', '%s', '%s')" % (item['museumID'], item['exhibitionTime'], item['exhibitionTheme'], item['exhibitionIntroduction'], item['exhibition_picture'])
+        self.cursor.execute(insert_sql)
 
+        # 4. 提交操作
+        self.connect.commit()
+        return item
+    def close_spider(self, spider):
+        self.cursor.close()
+        self.connect.close() 
 
