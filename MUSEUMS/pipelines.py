@@ -123,5 +123,55 @@ class Exhibition76Pipeline(object):
         return item
     def close_spider(self, spider):
         self.cursor.close()
-        self.connect.close() 
+        self.connect.close()      
 
+#展览表
+class ExhibitionPipeline(object):
+    def __init__(self):
+        # 连接数据库
+        self.connect = pymysql.connect(
+            host=MYSQL_HOST,
+            db=MYSQL_DBNAME,
+            user=MYSQL_USER,
+            passwd=MYSQL_PASSWD,
+            charset='utf8',
+            use_unicode=True)
+        # 通过cursor执行增删查改
+        self.cursor = self.connect.cursor()
+    def process_item(self, item, spider):
+        insert_sql = "INSERT INTO exhibition(museumID,exhibitionTheme,exhibition_picture,exhibitionIntroduction) VALUES ('%s', '%s', '%s','%s')" % (item['museumID'], item['exhibitionTheme'], item['exhibition_picture'],item['exhibitionIntroduction'])
+        self.cursor.execute(insert_sql)
+
+        # 4. 提交操作
+        self.connect.commit()
+        return item
+    def close_spider(self, spider):
+        self.cursor.close()
+        self.connect.close()
+    
+
+#藏品表
+class CollectionPipeline(object):
+    def __init__(self):
+        # 连接数据库
+        self.connect = pymysql.connect(
+            host=MYSQL_HOST,
+            db=MYSQL_DBNAME,
+            user=MYSQL_USER,
+            passwd=MYSQL_PASSWD,
+            charset='utf8',
+            use_unicode=True)
+        # 通过cursor执行增删查改
+        self.cursor = self.connect.cursor()
+    def process_item(self, item, spider):
+        #print(item)
+        insert_sql = "INSERT INTO collection(museumID,collectionName,collectionIntroduction,collectionImage) VALUES ('%s', '%s', '%s', '%s')" % (item['museumID'], item['collectionName'], item['collectionIntroduction'], item['collectionImage'])
+        self.cursor.execute(insert_sql)
+
+        # 4. 提交操作
+        self.connect.commit()
+        return item
+    def close_spider(self, spider):
+        self.cursor.close()
+        self.connect.close()
+    
