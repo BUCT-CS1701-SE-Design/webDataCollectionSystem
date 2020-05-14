@@ -15,10 +15,7 @@ MYSQL_HOST = 'rm-bp1k0s6kbpm66bpfc4o.mysql.rds.aliyuncs.com'
 MYSQL_DBNAME = 'museumapplication'
 MYSQL_USER = 'test1'
 MYSQL_PASSWD = 'test1'  
-'''MYSQL_HOST = 'localhost'
-MYSQL_DBNAME = 'henan'
-MYSQL_USER = 'root'
-MYSQL_PASSWD = '19980305' '''
+
 #博物馆表
 class MuseumsPipeline(object):
     def __init__(self):
