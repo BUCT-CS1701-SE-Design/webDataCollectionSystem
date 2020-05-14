@@ -3,7 +3,7 @@ import scrapy
 from MUSEUMS.items import exhibition75Item #声明使用的是那个Item
 #声明使用的是那个Pipiline
 custom_settings={
-        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Exhibition75Pipeline': 5,}
+        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Exhibition75Pipeline': 1,}
     }
 class Exhibition75Spider(scrapy.Spider):
     name = 'exhibition75'
