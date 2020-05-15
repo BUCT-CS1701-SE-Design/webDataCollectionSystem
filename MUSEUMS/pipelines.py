@@ -123,7 +123,31 @@ class Exhibition76Pipeline(object):
         return item
     def close_spider(self, spider):
         self.cursor.close()
-        self.connect.close()      
+        self.connect.close()  
+
+#博物馆表
+class MuseumPipeline(object):
+    def __init__(self):
+        # 连接数据库
+        self.connect = pymysql.connect(
+            host=MYSQL_HOST,
+            db=MYSQL_DBNAME,
+            user=MYSQL_USER,
+            passwd=MYSQL_PASSWD,
+            charset='utf8',
+            use_unicode=True)
+        # 通过cursor执行增删查改
+        self.cursor = self.connect.cursor()
+    def process_item(self, item, spider):
+        insert_sql = "INSERT INTO museum(museumID, museumName,introduction,opentime,Link,location,telephone) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (item['museumID'], item['museumName'], item['introduction'], item['opentime'], item['Link'], item['Location'], item['telephone'])
+        self.cursor.execute(insert_sql)
+
+        # 4. 提交操作
+        self.connect.commit()
+        return item
+    def close_spider(self, spider):
+        self.cursor.close()
+        self.connect.close()    
 
 #展览表
 class ExhibitionPipeline(object):

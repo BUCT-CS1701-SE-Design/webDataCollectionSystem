@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
-
+import copy
 from MUSEUMS.items import MuseumsItem #包含这个item类，必须设置
 #from scrapy.crawler import CrawlerProcess
 
@@ -32,7 +32,7 @@ class Museum30Spider(scrapy.Spider):
         yield scrapy.Request(
             url,
             callback=self.parse_detail,
-            meta={"item": item}  # 传递参数
+            meta={'item': copy.deepcopy(item)}  # 传递参数
         )
 
     def parse_detail(self, response):
