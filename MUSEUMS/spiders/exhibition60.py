@@ -2,11 +2,12 @@
 import scrapy
 import re 
 from MUSEUMS.items import exhibition75Item #声明使用的是那个Item
-custom_settings={
-        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Exhibition76Pipeline': 2,}
-    }
+
 
 class Exhibition60Spider(scrapy.Spider):
+    custom_settings={
+        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Exhibition76Pipeline': 2,}
+    }
     name = 'exhibition60'
     allowed_domains = ['gthyjng.com']
     start_urls = ['http://www.gthyjng.com/gqjs/']

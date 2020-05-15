@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from MUSEUMS.items import exhibition75Item #声明使用的是那个Item
-custom_settings={
-        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Exhibition76Pipeline': 2,}
-    }
+
 
 
 class Exhibition72Spider(scrapy.Spider):
+    custom_settings={
+        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Exhibition76Pipeline': 2,}
+    }
     name = 'exhibition72'
     allowed_domains = ['sdmuseum.com']
     start_urls = ['http://www.sdmuseum.com/channels/ch00017/']

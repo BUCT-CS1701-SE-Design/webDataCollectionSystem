@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from MUSEUMS.items import exhibition75Item #声明使用的是那个Item
-custom_settings={
-        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Exhibition76Pipeline': 2,}
-    }
+
 
 class Exhibition64Spider(scrapy.Spider):
+    custom_settings={
+        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Exhibition76Pipeline': 2,}
+    }
     name = 'exhibition64'
     allowed_domains = ['jgsgmbwg.com']
     start_urls = ['http://www.jgsgmbwg.com/bwgnews.php?cid=7']

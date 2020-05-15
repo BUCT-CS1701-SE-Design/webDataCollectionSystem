@@ -67,10 +67,10 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    #'MUSEUMS.pipelines.MuseumsPipeline': 5,
+    'MUSEUMS.pipelines.MuseumsPipeline': 5,
     #'MUSEUMS.pipelines.Education75Pipeline':2,
     #'MUSEUMS.pipelines.Academic75Pipeline':3,
-    #'MUSEUMS.pipelines.Collection75Pipeline':4,
+    'MUSEUMS.pipelines.Collection75Pipeline':4,
     #'MUSEUMS.pipelines.Exhibition75Pipeline':1,
     'MUSEUMS.pipelines.Exhibition76Pipeline':2,
 }

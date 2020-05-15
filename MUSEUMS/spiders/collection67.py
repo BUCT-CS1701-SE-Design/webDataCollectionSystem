@@ -2,11 +2,12 @@
 import scrapy
 
 from MUSEUMS.items import collection75Item
-custom_settings={
-        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Collection75Pipeline':4,}
-    }
+
 
 class Collection67Spider(scrapy.Spider):
+    custom_settings={
+        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Collection75Pipeline':4,}
+    }
     name = 'collection67'
     allowed_domains = ['81-china.com']
     start_urls = ['http://www.81-china.com/collect/60.html']

@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from MUSEUMS.items import exhibition75Item #声明使用的是那个Item
-custom_settings={
+
+class Exhibition65Spider(scrapy.Spider):
+    custom_settings={
         'ITEM_PIPELINES':{'MUSEUMS.pipelines.Exhibition76Pipeline': 2,}
     }
 
-class Exhibition65Spider(scrapy.Spider):
     name = 'exhibition65'
     allowed_domains = ['jxmuseum.cn']
     start_urls = ['http://www.jxmuseum.cn/Exhibition/TempDisplayList/tzjl']

@@ -2,12 +2,13 @@
 import scrapy
 import re
 from MUSEUMS.items import collection75Item
-custom_settings={
-        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Collection75Pipeline':4,}
-    }
 
 
 class Collection60Spider(scrapy.Spider):
+    custom_settings={
+        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Collection75Pipeline':4,}
+    }
+
     name = 'collection60'
     allowed_domains = ['gthyjng.com']
     start_urls = ['http://www.gthyjng.com/gcww/wwjs/tdgmsq/']
