@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from MUSEUMS.items import MuseumsItem #包含这个item类，必须设置
-custom_settings={
+
+class Museum60Spider(scrapy.Spider):
+    custom_settings={
         'ITEM_PIPELINES':{'MUSEUMS.pipelines.MuseumsPipeline': 5,}
     }
 
-class Museum60Spider(scrapy.Spider):
     name = 'museum60'
     allowed_domains = ['gthyjng.com']
     start_urls = ['http://gthyjng.com/']

@@ -28,7 +28,7 @@ class Exhibition37Spider(scrapy.Spider):
             yield scrapy.Request(
                 url,
                 callback=self.parse_detail,
-                # meta={"item": item}  # 传递参数
+                # meta={'item': copy.deepcopy(item)}  # 传递参数
 
                 meta={'item': copy.deepcopy(item)}
             )

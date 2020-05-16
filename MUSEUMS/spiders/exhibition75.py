@@ -2,10 +2,11 @@
 import scrapy
 from MUSEUMS.items import exhibition75Item #声明使用的是那个Item
 #声明使用的是那个Pipiline
-custom_settings={
+
+class Exhibition75Spider(scrapy.Spider):
+    custom_settings={
         'ITEM_PIPELINES':{'MUSEUMS.pipelines.Exhibition75Pipeline': 1,}
     }
-class Exhibition75Spider(scrapy.Spider):
     name = 'exhibition75'
     allowed_domains = ['chnmus.net']
     start_urls = ['http://www.chnmus.net/template/viewList?page=1&catalogId=10c40ca2d1144146a241171338dc2f9b']
