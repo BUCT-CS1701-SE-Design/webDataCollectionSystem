@@ -68,10 +68,20 @@ ROBOTSTXT_OBEY = False
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     'MUSEUMS.pipelines.MuseumsPipeline': 5,
+<<<<<<< HEAD
     #'MUSEUMS.pipelines.Education75Pipeline':2,
     #'MUSEUMS.pipelines.Academic75Pipeline':3,
     'MUSEUMS.pipelines.Collection75Pipeline':4,
     #'MUSEUMS.pipelines.Exhibition75Pipeline':1,
+=======
+    'MUSEUMS.pipelines.MuseumPipeline': 5,
+    'MUSEUMS.pipelines.Education75Pipeline':2,
+    'MUSEUMS.pipelines.Academic75Pipeline':3,
+    'MUSEUMS.pipelines.Collection75Pipeline':4,
+    'MUSEUMS.pipelines.Exhibition75Pipeline':1,
+    'MUSEUMS.pipelines.CollectionPipeline':4,
+    'MUSEUMS.pipelines.ExhibitionPipeline':1,
+>>>>>>> dev1
     'MUSEUMS.pipelines.Exhibition76Pipeline':2,
 }
 
