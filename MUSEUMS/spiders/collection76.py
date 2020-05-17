@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from MUSEUMS.items import collection75Item
-custom_settings={
+
+class Collection76Spider(scrapy.Spider):
+    custom_settings={
         'ITEM_PIPELINES':{'MUSEUMS.pipelines.Collection75Pipeline':4,}
     }
-class Collection76Spider(scrapy.Spider):
     name = 'collection76'
     allowed_domains = ['hnzzmuseum.com']
     start_urls = ['http://www.hnzzmuseum.com/collection5_list.html']

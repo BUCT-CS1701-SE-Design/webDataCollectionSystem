@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from MUSEUMS.items import collection75Item
-custom_settings={
-        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Collection75Pipeline':4,}
-    }
 
 
 class Collection62Spider(scrapy.Spider):
+    custom_settings={
+        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Collection75Pipeline':4,}
+    }
+
     name = 'collection62'
     allowed_domains = ['mtybwg.org.cn']
     start_urls = ['http://www.mtybwg.org.cn/cangpin.aspx']

@@ -2,10 +2,11 @@
 import scrapy
 from MUSEUMS.items import MuseumsItem 
 import re
-custom_settings={
+
+class Museum78Spider(scrapy.Spider):
+    custom_settings={
         'ITEM_PIPELINES':{'MUSEUMS.pipelines.MuseumsPipeline': 5,}
     }
-class Museum78Spider(scrapy.Spider):
     name = 'museum78'
     allowed_domains = ['nyhhg.com']
     start_urls = ['http://nyhhg.com/']

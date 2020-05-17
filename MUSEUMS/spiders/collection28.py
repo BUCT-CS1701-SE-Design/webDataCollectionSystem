@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
+import copy
 from MUSEUMS.items import collection75Item
 
 class Collection28Spider(scrapy.Spider):
@@ -28,7 +29,7 @@ class Collection28Spider(scrapy.Spider):
             yield scrapy.Request(
                 url,
                 callback=self.parse_detail,
-                meta={"item": item}  # 传递参数
+                meta={'item': copy.deepcopy(item)}  # 传递参数
             )
 
         # 完成每页之后开始下一页

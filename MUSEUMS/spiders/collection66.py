@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from MUSEUMS.items import collection75Item
-custom_settings={
-        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Collection75Pipeline':4,}
-    }
+
 
 
 class Collection66Spider(scrapy.Spider):
+    custom_settings={
+        'ITEM_PIPELINES':{'MUSEUMS.pipelines.Collection75Pipeline':4,}
+    }
     name = 'collection66'
     allowed_domains = ['rjjng.com.cn']
     start_urls = ['http://www.rjjng.com.cn/treasure/yjww.html']
