@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 from scrapy import cmdline
-import pymysql
+'''import pymysql
  
 # 建立数据库连接
 db=pymysql.connect(
@@ -46,6 +46,6 @@ except:
 # cursor.close()
 
 # 关闭连接
-db.close()
+db.close()'''
 
 cmdline.execute("scrapy crawlall".split())

@@ -47,5 +47,5 @@ class Collection41Spider(scrapy.Spider):
             content = "".join(contentraw[-2]).strip()
         item["collectionIntroduction"] = content
         # yield item
-        # yield item
-        print(item)
+        yield item
+        
